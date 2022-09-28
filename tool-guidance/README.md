@@ -1,4 +1,4 @@
-# cypress-template
+# Tool Guidance: Cypress
 BCGov Template for Cypress containing key integration points
 
 To install Cypress and tools on your machine:
