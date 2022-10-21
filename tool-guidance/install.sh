@@ -62,7 +62,7 @@ then
   if [[ $fileupload == 'y' ]]
   then
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/library/file-upload/commands.js?' >> $testpath/cypress/support/commands.js
-    mkdir $testpath/cypress/e2e/examples/fileupload-example
+    mkdir $testpath/cypress/e2e/examples/file-upload-example
   fi 
   if [[ $random == 'y' ]]
   then
