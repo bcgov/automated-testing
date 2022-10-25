@@ -30,6 +30,8 @@ RUN echo "whoami: $(whoami)" \
   && id \
   && npm install -g typescript \
   && npm install -g cypress \
+  # Install Custom libraries for BCGov Use
+  && npm install -g @faker-js/faker cypress-file-upload cypress-keycloak \
   && (node -p "process.env.CI_XBUILD && process.arch === 'arm64' ? 'Skipping cypress verify on arm64 due to SIGSEGV.' : process.exit(1)" \
     || (cypress verify \
     # Cypress cache and installed version
@@ -41,11 +43,6 @@ RUN echo "whoami: $(whoami)" \
   # give every user read access to the "/root" folder where the binary is cached
   # we really only need to worry about the top folder, fortunately
   #######
-  # Install Custom libraries for BCGov Use
-  && npm install -g @faker-js/faker \
-  && npm install -g cypress-file-upload \
-  && npm install -g cypress-keycloak \
-  ########
   && ls -la /root \
   && chmod 755 /root \
   # always grab the latest Yarn
