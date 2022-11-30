@@ -1,9 +1,9 @@
 {
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "cypress": "^10.10.0",
+    "cypress": "^10.11.0",
     "cypress-file-upload": "^5.0.8",
-    "cypress-keycloak": "^1.9.0",
-    "cypress-plugin-api": "^1.4.1"
+    "cypress-keycloak": "^2.0.0",
+    "cypress-plugin-api": "^2.6.1"
   }
 }
