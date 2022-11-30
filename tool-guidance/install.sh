@@ -17,7 +17,7 @@ then
   echo "npm install --save-dev typescript" >> installconfig.sh
 fi
 
-echo "npm install --save-dev cypress" >> installconfig.sh
+echo "npm install --save-dev cypress@10.11.0" >> installconfig.sh
 
 read -p "Simple install or advanced? ([s]/a)?" level
 level=${level:-"s"}
@@ -40,6 +40,12 @@ then
   if [[ $random == 'y' ]]
   then
     echo "npm install @faker-js/faker --save-dev" >> installconfig.sh
+  fi
+  echo "Do you need API testing support? (y/n)"
+  read api
+  if [[ $api == 'y' ]]
+  then
+    echo "npm install cypress-plugin-api --save-dev" >> installconfig.sh
   fi
 fi
 echo ""
@@ -68,6 +74,12 @@ then
   then
     mkdir $testpath/cypress/e2e/examples/faker-example
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/library/faker/example/faker-example.cy.js' >> $testpath/cypress/e2e/examples/faker-example/faker-example.cy.js
+  fi 
+  if [[ $api == 'y' ]]
+  then
+    mkdir $testpath/cypress/e2e/examples/api-example
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/library/api/example/api-example.cy.js' >> $testpath/cypress/e2e/examples/api-example/api-example.cy.js
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/library/api/commands.js' >> $testpath/cypress/support/commands.js
   fi 
   if [[ $keycloak == 'y' ]]
   then
