@@ -67,26 +67,26 @@ then
  mkdir $testpath/cypress/e2e/examples
   if [[ $fileupload == 'y' ]]
   then
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/library/file-upload/commands.js?' >> $testpath/cypress/support/commands.js
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/file-upload/commands.js?' >> $testpath/cypress/support/commands.js
     mkdir $testpath/cypress/e2e/examples/file-upload-example
   fi 
   if [[ $random == 'y' ]]
   then
     mkdir $testpath/cypress/e2e/examples/faker-example
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/library/faker/example/faker-example.cy.js' >> $testpath/cypress/e2e/examples/faker-example/faker-example.cy.js
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/faker/example/faker-example.cy.js' >> $testpath/cypress/e2e/examples/faker-example/faker-example.cy.js
   fi 
   if [[ $api == 'y' ]]
   then
     mkdir $testpath/cypress/e2e/examples/api-example
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/library/api/example/api-example.cy.js' >> $testpath/cypress/e2e/examples/api-example/api-example.cy.js
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/library/api/commands.js' >> $testpath/cypress/support/commands.js
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/example/api-example.cy.js' >> $testpath/cypress/e2e/examples/api-example/api-example.cy.js
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/commands.js' >> $testpath/cypress/support/commands.js
   fi 
   if [[ $keycloak == 'y' ]]
   then
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/library/keycloak/commands.js' >> $testpath/cypress/support/commands.js
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/library/keycloak/sample.cypress.env.json' >> $testpath/sample.cypress.env.json
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/commands.js' >> $testpath/cypress/support/commands.js
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/sample.cypress.env.json' >> $testpath/sample.cypress.env.json
     mkdir $testpath/cypress/e2e/examples/keycloak-example
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/library/keycloak/example/keycloak-example.cy.js' >> $testpath/cypress/e2e/examples/keycloak-example/keycloak-example.cy.js
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/example/keycloak-example.cy.js' >> $testpath/cypress/e2e/examples/keycloak-example/keycloak-example.cy.js
   fi 
 fi
 echo ""
