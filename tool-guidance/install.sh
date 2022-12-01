@@ -13,7 +13,6 @@ read -p "Do you use ([js]/ts)?" code
 code=${code:-"js"}
 if [[ $code == 'ts' ]]
 then
-  echo "#!/bin/bash" >> installconfig.sh
   echo "npm install --save-dev typescript" >> installconfig.sh
 fi
 
@@ -65,6 +64,11 @@ then
  npx cypress open
  touch $testpath/sample.cypress.env.json
  mkdir $testpath/cypress/e2e/examples
+  if [[ $code == 'ts' ]]
+  then
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/tsconfig.json?' >> $testpath/tsconfig.json
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/tslint.json?' >> $testpath/tslint.json
+  fi
   if [[ $fileupload == 'y' ]]
   then
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/file-upload/commands.js?' >> $testpath/cypress/support/commands.js
@@ -88,6 +92,11 @@ then
     mkdir $testpath/cypress/e2e/examples/keycloak-example
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/example/keycloak-example.cy.js' >> $testpath/cypress/e2e/examples/keycloak-example/keycloak-example.cy.js
   fi 
+  if [[ $code == 'ts' ]]
+  then
+    cd $testpath/cypress
+    du -a . | grep .cy.js | awk '{print "mv -v " $2 " " $2 }' | sed 's/\(\b[\.]js$\)/\.ts/g' | bash
+  fi  
 fi
 echo ""
 echo "Install Complete!"
