@@ -16,7 +16,7 @@ then
   echo "npm install --save-dev typescript" >> installconfig.sh
 fi
 
-echo "npm install --save-dev cypress@10.11.0" >> installconfig.sh
+echo "npm install --save-dev cypress" >> installconfig.sh
 
 read -p "Simple install or advanced? ([s]/a)?" level
 level=${level:-"s"}
@@ -26,25 +26,25 @@ then
   keycloak=${keycloak:-"y"}
   if [[ $keycloak == 'y' ]]
   then
-    echo "npm install --save-dev cypress-keycloak" >> installconfig.sh
+    echo "npm install --force --save-dev cypress-keycloak " >> installconfig.sh
   fi
   echo "Do you need file upload support? (y/n)"
   read fileupload
   if [[ $fileupload == 'y' ]]
   then
-    echo "npm install --save-dev cypress-file-upload" >> installconfig.sh
+    echo "npm install --force --save-dev cypress-file-upload" >> installconfig.sh
   fi
   echo "Do you need randomized input support? (y/n)"
   read random
   if [[ $random == 'y' ]]
   then
-    echo "npm install @faker-js/faker --save-dev" >> installconfig.sh
+    echo "npm install --force --save-dev @faker-js/faker" >> installconfig.sh
   fi
   echo "Do you need API testing support? (y/n)"
   read api
   if [[ $api == 'y' ]]
   then
-    echo "npm install cypress-plugin-api --save-dev" >> installconfig.sh
+    echo "npm install --force --save-dev cypress-plugin-api" >> installconfig.sh
   fi
 fi
 echo ""
