@@ -16,7 +16,7 @@ then
   echo "npm install --save-dev typescript" >> installconfig.sh
 fi
 
-echo "npm install --save-dev cypress@10.11.0" >> installconfig.sh
+echo "npm install --save-dev cypress" >> installconfig.sh
 
 read -p "Simple install or advanced? ([s]/a)?" level
 level=${level:-"s"}
@@ -26,25 +26,25 @@ then
   keycloak=${keycloak:-"y"}
   if [[ $keycloak == 'y' ]]
   then
-    echo "npm install --save-dev cypress-keycloak" >> installconfig.sh
+    echo "npm install --force --save-dev cypress-keycloak " >> installconfig.sh
   fi
-  echo "Do you need file upload support? (y/n)"
-  read fileupload
+  read -p "Do you need file upload support? ([y]/n)" fileupload
+  fileupload=${fileupload:-"y"}
   if [[ $fileupload == 'y' ]]
   then
-    echo "npm install --save-dev cypress-file-upload" >> installconfig.sh
+    echo "npm install --force --save-dev cypress-file-upload" >> installconfig.sh
   fi
-  echo "Do you need randomized input support? (y/n)"
-  read random
+  read -p "Do you need randomized input support? ([y]/n)" random
+  random=${random:-"y"}
   if [[ $random == 'y' ]]
   then
-    echo "npm install @faker-js/faker --save-dev" >> installconfig.sh
+    echo "npm install --force --save-dev @faker-js/faker" >> installconfig.sh
   fi
-  echo "Do you need API testing support? (y/n)"
-  read api
+  read -p "Do you need API testing support? ([y]/n)" api
+  api=${api:-"y"}
   if [[ $api == 'y' ]]
   then
-    echo "npm install cypress-plugin-api --save-dev" >> installconfig.sh
+    echo "npm install --force --save-dev cypress-plugin-api" >> installconfig.sh
   fi
 fi
 echo ""
@@ -54,8 +54,8 @@ echo "*************************************************************"
 echo "*   Your selections have been stored in installconfig.sh    *"
 echo "*************************************************************"
 echo ""
-echo "Do you want to run this script now? (y/n)"
-read answer
+read -p "Do you want to run this script now? ([y]/n)" answer
+answer=${answer:-"y"}
 if [[ $answer == 'y' ]]
 then
  source $testpath/installconfig.sh
@@ -96,8 +96,12 @@ then
   then
     cd $testpath/cypress
     du -a . | grep .cy.js | awk '{print "mv -v " $2 " " $2 }' | sed 's/\(\b[\.]js$\)/\.ts/g' | bash
-  fi    
-fi
+  fi
 echo ""
 echo "Install Complete!"
+else
+  echo ""
+  echo "Not Installed!"
+fi
+
 
