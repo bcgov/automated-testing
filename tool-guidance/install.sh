@@ -66,12 +66,12 @@ then
  mkdir $testpath/cypress/e2e/examples
   if [[ $code == 'ts' ]]
   then
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/tsconfig.json?' >> $testpath/tsconfig.json
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/tslint.json?' >> $testpath/tslint.json
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/tsconfig.json' >> $testpath/tsconfig.json
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/tslint.json' >> $testpath/tslint.json
   fi
   if [[ $fileupload == 'y' ]]
   then
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/file-upload/commands.js?' >> $testpath/cypress/support/commands.$code
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/file-upload/commands.js' >> $testpath/cypress/support/commands.$code
     mkdir $testpath/cypress/e2e/examples/file-upload-example
   fi 
   if [[ $random == 'y' ]]
