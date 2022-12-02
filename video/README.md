@@ -1,3 +1,3 @@
 # Videos for the Wiki
 
-* [Cypress install with install.sh]([Walkthrough video of the install](https://youtu.be/yCpVLDdND8s))
+* [Cypress install with install.sh](https://youtu.be/yCpVLDdND8s)
