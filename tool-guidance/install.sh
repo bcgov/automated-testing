@@ -77,6 +77,7 @@ then
   if [[ $random == 'y' ]]
   then
     mkdir $testpath/cypress/e2e/examples/faker-example
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/faker/README.md' >> $testpath/cypress/e2e/examples/faker-example/README.md
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/faker/example/faker-example.cy.js' >> $testpath/cypress/e2e/examples/faker-example/faker-example.cy.$code
   fi 
   if [[ $api == 'y' ]]
