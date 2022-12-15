@@ -65,4 +65,4 @@ describe('Keycloak Example', () => {
   });
  ```
 If implemented as above, your code will login (quickly) and obtain a [JWT](https://jwt.io/introduction) and make this available to your tests.
-By skipping the UI login method this way, you gain a lot of speed (going for couple of minutes to under 1 secod for a login).
+By skipping the UI login method this way, you gain a lot of speed (going for couple of minutes to under 1 second for a login).
