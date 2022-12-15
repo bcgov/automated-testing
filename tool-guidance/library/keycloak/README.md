@@ -15,7 +15,7 @@ The example code uses the following environment variables:
 * authUrl - The keycloak instance URL
 
 For local running we would implement a `cypress.env.json` file in the root of your testing directory.
-```
+```json
 {
     "username": "cypress@idir",
     "password": "<password>",
@@ -30,7 +30,7 @@ A sample template `sample.cypress.env.json` is provided.
 ## Usage
 During the install with `install.sh`, the `commands.js` (found in the cypress/support directory file was changed to include 2 overwrites of the login and logout function that are part of the cypress-keycloak package.
 
-```
+```javascript
 import 'cypress-keycloak';
 
 Cypress.Commands.overwrite('login', (originalFn) => {
@@ -54,7 +54,7 @@ Cypress.Commands.overwrite('logout', (originalFn) => {
 ```
 
 These functions now use the environment variables we have set up earlier, and can be simply called in the test code (see the keycloak-example code included):
-```
+```javascript
 describe('Keycloak Example', () => {
   beforeEach(() => {
     cy.logout();
