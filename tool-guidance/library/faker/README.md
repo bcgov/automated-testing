@@ -5,7 +5,7 @@ Detailed documentation on all the options can be found at https://fakerjs.dev/gu
 
 By using faker we avoid using stale, old and sometimes inappropriate test data. 
 You can use faker by simply calling a faker function when entering data.
-```
+```javascript
     cy.get('#notes').type('userId: ' + faker.datatype.uuid() +'{enter}');
     cy.get('#notes').type('username: ' + faker.internet.userName() +'{enter}');
     cy.get('#notes').type('email: ' + faker.internet.email() +'{enter}');
@@ -20,11 +20,11 @@ Complex test scripts will often have functions created for common activities. By
 
 In the example here we have a function for adding project information.
 This function can be called as follows:
-```
-    add_project_info(null, null, null, null); //project_name, project_type, start_date, end_date
+```javascript
+add_project_info(null, null, null, null); //project_name, project_type, start_date, end_date
 ```
 In this call, we are not providing any parameters, let's see how the function actually deals with that:
-```
+```javascript
 export function add_project_info(
   project_name,
   project_type,
@@ -77,7 +77,7 @@ export function add_project_info(
 }
 ```
 In case of NULL data in the parameter, the function will use a faker value:
-```
+```javascript
   cy.get("#project_name").type(
     (
       project_name || faker.company.catchPhrase() + " " + faker.company.bs()
@@ -88,7 +88,7 @@ This way, your function can be used to enter specific data, random data or a mix
 Your fuction can now be re-used in data-driven scenarios, smoke test scenarios etc.
 
 Example:
-```
+```javascript
 add_project_info('My test project', null, null, null); //project_name, project_type, start_date, end_date
 ```
 The project added will now say 'My test project' and all the other data will be random as specified.
