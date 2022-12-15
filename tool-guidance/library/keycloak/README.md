@@ -10,6 +10,7 @@ The keycloak pack does allow for other functionality to be used, but that is not
 The example code uses the following environment variables:
 * username - User ID
 * password - Password
+* host - The application that needs authentication, also the return url after logout
 * authRealm - Keycloak realm
 * authClientId - Keycloak Client ID
 * authUrl - The keycloak instance URL
