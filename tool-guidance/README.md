@@ -2,7 +2,7 @@
 BCGov Template for Cypress containing key integration points
 
 To install Cypress and tools on your machine:
-* copy install.sh to your machine (make sure you make it executable ```chmod +x install.sh```)
+* copy install.sh (e.g. `curl -O https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/install.sh`) to your machine (make sure you make it executable ```chmod +x install.sh```)
 * Create a root directory for your tests (testing is good)
 * ```./install.sh```
 * Answer questions (currently only js supported)
