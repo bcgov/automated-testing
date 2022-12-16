@@ -86,6 +86,7 @@ then
     mkdir $testpath/cypress/e2e/examples/api-example
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/example/api-example.cy.js' >> $testpath/cypress/e2e/examples/api-example/api-example.cy.$code
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/commands.js' >> $testpath/cypress/support/commands.$code
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/README.md' >> $testpath/cypress/e2e/examples/api-example/README.md
   fi 
   if [[ $keycloak == 'y' ]]
   then
