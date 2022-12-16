@@ -8,7 +8,6 @@ chmod +x installconfig.sh
 
 read -p "What is your path for your root testing directory [$PWD]? " testpath
 testpath=${testpath:-$PWD}
-
 read -p "Do you use JavaScript([js])/TypeScript(ts)?" code
 code=${code:-"js"}
 if [[ $code == 'ts' ]]
