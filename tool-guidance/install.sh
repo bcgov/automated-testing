@@ -8,8 +8,7 @@ chmod +x installconfig.sh
 
 read -p "What is your path for your root testing directory [$PWD]? " testpath
 testpath=${testpath:-$PWD}
-
-read -p "Do you use (JavaScript([js)]/TypeScript(ts))?" code
+read -p "Do you use JavaScript([js])/TypeScript(ts)?" code
 code=${code:-"js"}
 if [[ $code == 'ts' ]]
 then
@@ -61,14 +60,14 @@ then
  source $testpath/installconfig.sh
  rm -f $testpath/installconfig.sh
  npm audit fix --force
+ if [[ $code == 'ts' ]]
+ then
+   curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/tsconfig.json' >> $testpath/tsconfig.json
+   curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/tslint.json' >> $testpath/tslint.json
+ fi
  npx cypress open
  touch $testpath/sample.cypress.env.json
  mkdir $testpath/cypress/e2e/examples
-  if [[ $code == 'ts' ]]
-  then
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/tsconfig.json' >> $testpath/tsconfig.json
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/tslint.json' >> $testpath/tslint.json
-  fi
   if [[ $fileupload == 'y' ]]
   then
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/file-upload/commands.js' >> $testpath/cypress/support/commands.$code
@@ -86,6 +85,7 @@ then
     mkdir $testpath/cypress/e2e/examples/api-example
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/example/api-example.cy.js' >> $testpath/cypress/e2e/examples/api-example/api-example.cy.$code
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/commands.js' >> $testpath/cypress/support/commands.$code
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/README.md' >> $testpath/cypress/e2e/examples/api-example/README.md
   fi 
   if [[ $keycloak == 'y' ]]
   then
