@@ -9,7 +9,7 @@ chmod +x installconfig.sh
 read -p "What is your path for your root testing directory [$PWD]? " testpath
 testpath=${testpath:-$PWD}
 
-read -p "Do you use ([js]/ts)?" code
+read -p "Do you use (JavaScript([js)]/TypeScript(ts))?" code
 code=${code:-"js"}
 if [[ $code == 'ts' ]]
 then
@@ -73,6 +73,7 @@ then
   then
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/file-upload/commands.js' >> $testpath/cypress/support/commands.$code
     mkdir $testpath/cypress/e2e/examples/file-upload-example
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/file-upload/README.md' >> $testpath/cypress/e2e/examples/file-upload-example/README.md
   fi 
   if [[ $random == 'y' ]]
   then
