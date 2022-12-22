@@ -7,6 +7,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Install-Deps  
+        run:
+          cd tool-guidance/testing
+          npm install --force
       - name: E2E Smoke tests
         uses: cypress-io/github-action@v5
         id: smoke
