@@ -1,0 +1,24 @@
+# Manual started workflow
+name: e2e
+on: workflow_dispatch
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: E2E Smoke tests
+        uses: cypress-io/github-action@v5
+        id: smoke
+        # Continue the build in case of an error, as we need to set the
+        # commit status in the next step, both in case of success and failure
+        continue-on-error: true
+        with:
+        # No recording of results in the cloud
+          record: false
+          working-directory: tool-guidance/testing
+        env:
+          CYPRESS_BASE_URL: ${{ secrets.CYPRESS_HOST }}
+          CYPRESS_host: ${{ secrets.CYPRESS_HOST }}
+          CYPRESS_username: ${{ secrets.CYPRESS_USER_NAME }}
+          CYPRESS_password: ${{ secrets.CYPRESS_PASSWORD }}
