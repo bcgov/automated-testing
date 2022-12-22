@@ -1,13 +1,23 @@
 # Manual started workflow
-name: End-to-end tests
-on: [push]
+name: e2e
+on: workflow_dispatch
 jobs:
   cypress-run:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
+      - name: E2E Smoke tests
         uses: cypress-io/github-action@v5
+        id: smoke
+        # Continue the build in case of an error, as we need to set the
+        # commit status in the next step, both in case of success and failure
+        continue-on-error: true
+        with:
+          record: false
+          working-directory: testing/e2e
+        env:
+          CYPRESS_BASE_URL: ${{ secrets.CYPRESS_HOST }}
+          CYPRESS_host: ${{ secrets.CYPRESS_HOST }}
+          CYPRESS_username: ${{ secrets.CYPRESS_USER_NAME }}
+          CYPRESS_password: ${{ secrets.CYPRESS_PASSWORD }}
