@@ -8,7 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install-Deps  
-        run:
+        run: |
           cd tool-guidance/testing
           npm install --force
       - name: E2E Smoke tests
