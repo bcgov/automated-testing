@@ -10,7 +10,10 @@ jobs:
       - name: Install-Deps  
         run: |
           cd tool-guidance/testing
-          npm install --force
+          npm install --force --save-dev cypress-keycloak 
+          npm install --force --save-dev cypress-file-upload
+          npm install --force --save-dev @faker-js/faker
+          npm install --force --save-dev cypress-plugin-api
       - name: E2E Smoke tests
         uses: cypress-io/github-action@v5
         id: smoke
