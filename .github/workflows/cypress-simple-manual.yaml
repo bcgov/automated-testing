@@ -30,7 +30,7 @@ jobs:
           cd tool-guidance/testing
           rm -f package.json
           npm i typescript
-          npm i cypress
+          npm i cypress@10.11.0
           npm i --force cypress-keycloak 
           npm i --force cypress-file-upload
           npm i --force @faker-js/faker
