@@ -35,7 +35,6 @@ jobs:
           npm i --force cypress-file-upload
           npm i --force @faker-js/faker
           npm i --force cypress-plugin-api
-          npm ci
       - name: E2E Smoke tests
         uses: cypress-io/github-action@v5
         id: smoke
