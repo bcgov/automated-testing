@@ -33,8 +33,9 @@ jobs:
         continue-on-error: true
         with:
         # No recording of results in the cloud
-          install-command: npm ci -f
           record: false
+        # We need to force the install due to version checking  
+          install-command: npm ci -f
           working-directory: tool-guidance/testing
         env:
           CYPRESS_BASE_URL: ${{ secrets.CYPRESS_HOST }}
