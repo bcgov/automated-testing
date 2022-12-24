@@ -33,7 +33,7 @@ jobs:
         continue-on-error: true
         with:
         # No recording of results in the cloud
-          install-command: -f
+          install-command: npm ci -f
           record: false
           working-directory: tool-guidance/testing
         env:
