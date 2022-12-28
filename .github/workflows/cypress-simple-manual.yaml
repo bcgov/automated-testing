@@ -37,8 +37,3 @@ jobs:
         # We need to force the install due to version checking  
           install-command: npm ci -f
           working-directory: tool-guidance/testing
-        env:
-          CYPRESS_BASE_URL: ${{ secrets.CYPRESS_HOST }}
-          CYPRESS_host: ${{ secrets.CYPRESS_HOST }}
-          CYPRESS_username: ${{ secrets.CYPRESS_USER_NAME }}
-          CYPRESS_password: ${{ secrets.CYPRESS_PASSWORD }}
