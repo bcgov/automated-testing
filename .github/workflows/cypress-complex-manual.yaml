@@ -1,5 +1,5 @@
 # Manual started workflow
-name: e2e
+name: e2e-complex
 on: workflow_dispatch
 jobs:
   cypress-run:
