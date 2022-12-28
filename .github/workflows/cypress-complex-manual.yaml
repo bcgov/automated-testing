@@ -42,7 +42,7 @@ jobs:
           node-version: 16
 
       - name: E2E Smoke tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v5
         # let's give this action an ID so we can refer
         # to its output values later
         id: smoke
