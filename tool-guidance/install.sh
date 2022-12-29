@@ -60,49 +60,48 @@ then
  source $testpath/installconfig.sh
  rm -f $testpath/installconfig.sh
  npm audit fix --force
- rm -f $testpath/cypress.config.js
  if [[ $code == 'ts' ]]
  then
-   curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/tsconfig.json' >> $testpath/tsconfig.json
-   curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/tslint.json' >> $testpath/tslint.json
-   curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/cypress.config.js' >> $testpath/cypress.config.ts
- else
-   curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/cypress.config.js' >> $testpath/cypress.config.js
+   curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/tsconfig.json' > $testpath/tsconfig.json
+   curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/tslint.json' > $testpath/tslint.json
  fi
  npx cypress open
  touch $testpath/sample.cypress.env.json
  mkdir $testpath/cypress/e2e/examples
   if [[ $fileupload == 'y' ]]
   then
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/file-upload/commands.js' >> $testpath/cypress/support/commands.$code
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/file-upload/commands.js' > $testpath/cypress/support/commands.$code
     mkdir $testpath/cypress/e2e/examples/file-upload-example
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/file-upload/README.md' >> $testpath/cypress/e2e/examples/file-upload-example/README.md
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/file-upload/README.md' > $testpath/cypress/e2e/examples/file-upload-example/README.md
   fi 
   if [[ $random == 'y' ]]
   then
     mkdir $testpath/cypress/e2e/examples/faker-example
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/faker/README.md' >> $testpath/cypress/e2e/examples/faker-example/README.md
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/faker/example/faker-example.cy.js' >> $testpath/cypress/e2e/examples/faker-example/faker-example.cy.$code
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/faker/README.md' > $testpath/cypress/e2e/examples/faker-example/README.md
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/faker/example/faker-example.cy.js' > $testpath/cypress/e2e/examples/faker-example/faker-example.cy.$code
   fi 
   if [[ $api == 'y' ]]
   then
     mkdir $testpath/cypress/e2e/examples/api-example
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/example/api-example.cy.js' >> $testpath/cypress/e2e/examples/api-example/api-example.cy.$code
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/commands.js' >> $testpath/cypress/support/commands.$code
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/README.md' >> $testpath/cypress/e2e/examples/api-example/README.md
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/example/api-example.cy.js' > $testpath/cypress/e2e/examples/api-example/api-example.cy.$code
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/commands.js' > $testpath/cypress/support/commands.$code
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/README.md' > $testpath/cypress/e2e/examples/api-example/README.md
   fi 
   if [[ $keycloak == 'y' ]]
   then
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/commands.js' >> $testpath/cypress/support/commands.$code
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/sample.cypress.env.json' >> $testpath/sample.cypress.env.json
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/commands.js' > $testpath/cypress/support/commands.$code
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/sample.cypress.env.json' > $testpath/sample.cypress.env.json
     mkdir $testpath/cypress/e2e/examples/keycloak-example
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/README.md' >> $testpath/cypress/e2e/examples/keycloak-example/README.md
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/example/keycloak-example.cy.js' >> $testpath/cypress/e2e/examples/keycloak-example/keycloak-example.cy.$code
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/README.md' > $testpath/cypress/e2e/examples/keycloak-example/README.md
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/example/keycloak-example.cy.js' > $testpath/cypress/e2e/examples/keycloak-example/keycloak-example.cy.$code
   fi 
   if [[ $code == 'ts' ]]
   then
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/cypress.config.ts' > $testpath/cypress.config.ts
     cd $testpath/cypress
     du -a . | grep .cy.js | awk '{print "mv -v " $2 " " $2 }' | sed 's/\(\b[\.]js$\)/\.ts/g' | bash
+  else
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/cypress.config.js' > $testpath/cypress.config.js
   fi
 echo ""
 echo "Install Complete!"
