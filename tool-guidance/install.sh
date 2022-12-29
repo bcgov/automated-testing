@@ -60,10 +60,14 @@ then
  source $testpath/installconfig.sh
  rm -f $testpath/installconfig.sh
  npm audit fix --force
+ rm -f $testpath/cypress.config.js
  if [[ $code == 'ts' ]]
  then
    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/tsconfig.json' >> $testpath/tsconfig.json
    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/tslint.json' >> $testpath/tslint.json
+   curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/cypress.config.js' >> $testpath/cypress.config.ts
+ else
+   curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/cypress.config.js' >> $testpath/cypress.config.js
  fi
  npx cypress open
  touch $testpath/sample.cypress.env.json
