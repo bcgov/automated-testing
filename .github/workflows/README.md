@@ -6,6 +6,8 @@ You'll find detailed documentation about the action there as well.
 To effectively run your tests in GHA, you have to make sure that you have set up your test suite using environment variables, some of which can be hardcoded into the workflow and others can be pulled from Github secrets.
 
 The following workflows examples are available:
-* Cypress Simple: The most basic set up
 * Cypress Simple Manual: The most basic set up, that can be started manually
-* Cypress Full: A fully fleshed out example and comments to show some good practices.
+* Cypress Complex Manual: The more complex set up, that can be started manually
+* Cypress Complex Auto: The more complex set up, that will be started automatically when code is pushed
+
+_NB: These workflows have a special install directive for Cypress to avoid version clashes between Cypress and used components. This will show up as WARN in your console output._
