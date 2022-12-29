@@ -36,8 +36,13 @@ jobs:
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         name: List the state of node modules
         continue-on-error: true
-        run: npm list          
-
+        run: npm list  
+        
+      - name: Cache Docker images.
+        uses: ScribeMD/docker-cache@0.2.6
+        with:
+          key: docker-${{ runner.os }}-${{ hashFiles(...) }}
+          
       - name: Wait for API response
         uses: nev7n/wait_for_response@v1.0.1
         with:
