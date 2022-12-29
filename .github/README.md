@@ -1,4 +1,4 @@
-# Workflows
+## Workflows
 In this library you'll find examples of GitHub Actions workflows that you can use to run your Cypress tests in GHA.
 The examples are based on using the following GitHub Action: https://github.com/cypress-io/github-action
 You'll find detailed documentation about the action there as well.
