@@ -38,21 +38,21 @@ jobs:
         continue-on-error: true
         run: npm list          
 
-      - name: Wait for API response
-        uses: nev7n/wait_for_response@v1.0.1
+      - name: Wait for API response   
+        uses: cygnetdigital/wait_for_response@v2.0.0
         with:
-          url: ${{ secrets.CYPRESS_API_HOST }}
-          responseCode: 200
+          url:  ${{ secrets.CYPRESS_API_HOST }}
+          responseCode: '200'
           timeout: 240000
-          interval: 500
+          interval: 5000    
 
       - name: Wait for APP response
-        uses: nev7n/wait_for_response@v1.0.1
+        uses: cygnetdigital/wait_for_response@v2.0.0
         with:
           url: ${{ secrets.CYPRESS_HOST }}
-          responseCode: 200
-          timeout: 120000
-          interval: 500
+          responseCode: '200'
+          timeout: 240000
+          interval: 5000
 
       # Install Node - for `node` and `npm` commands
       - name: Setup Node.js
