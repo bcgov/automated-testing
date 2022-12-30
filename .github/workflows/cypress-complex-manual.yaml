@@ -37,22 +37,28 @@ jobs:
         name: List the state of node modules
         continue-on-error: true
         run: npm list          
-          
+
       - name: Wait for API response
-        uses: nev7n/wait_for_response@v1.0.1
-        with:
+        env:
           url: ${{ secrets.CYPRESS_API_HOST }}
-          responseCode: 200
-          timeout: 240000
-          interval: 500
+          code: 200
+          wait_time: 10
+          max_attempts: 5
+        run: |
+          cd tool-guidance/testing
+          chmod +x waitforconnection.sh
+          bash ./waitforconnection.sh          
 
       - name: Wait for APP response
-        uses: nev7n/wait_for_response@v1.0.1
-        with:
+        env:
           url: ${{ secrets.CYPRESS_HOST }}
-          responseCode: 200
-          timeout: 120000
-          interval: 500
+          code: 200
+          wait_time: 10
+          max_attempts: 5
+        run: |
+          cd tool-guidance/testing
+          chmod +x waitforconnection.sh
+          bash ./waitforconnection.sh   
 
       # Install Node - for `node` and `npm` commands
       - name: Setup Node.js

@@ -38,21 +38,27 @@ jobs:
         continue-on-error: true
         run: npm list          
 
-      - name: Wait for API response   
-        uses: cygnetdigital/wait_for_response@v2.0.0
-        with:
-          url:  ${{ secrets.CYPRESS_API_HOST }}
-          responseCode: '200'
-          timeout: 240000
-          interval: 5000    
+      - name: Wait for API response
+        env:
+          url: ${{ secrets.CYPRESS_API_HOST }}
+          code: 200
+          wait_time: 10
+          max_attempts: 5
+        run: |
+          cd tool-guidance/testing
+          chmod +x waitforconnection.sh
+          bash ./waitforconnection.sh          
 
       - name: Wait for APP response
-        uses: cygnetdigital/wait_for_response@v2.0.0
-        with:
+        env:
           url: ${{ secrets.CYPRESS_HOST }}
-          responseCode: '200'
-          timeout: 240000
-          interval: 5000
+          code: 200
+          wait_time: 10
+          max_attempts: 5
+        run: |
+          cd tool-guidance/testing
+          chmod +x waitforconnection.sh
+          bash ./waitforconnection.sh   
 
       # Install Node - for `node` and `npm` commands
       - name: Setup Node.js

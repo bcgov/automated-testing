@@ -103,6 +103,7 @@ then
   else
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/cypress.config.js' > $testpath/cypress.config.js
   fi
+  curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/waitforconnection.sh' > $testpath/waitforconnection.sh
 echo ""
 echo "Install Complete!"
 else
