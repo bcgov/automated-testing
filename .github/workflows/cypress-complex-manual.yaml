@@ -37,22 +37,6 @@ jobs:
         name: List the state of node modules
         continue-on-error: true
         run: npm list          
-
-      - name: Wait for API response
-        run: |
-          attempt_counter=0
-          max_attempts=3
-          code=200
-          wait_time=120
-          until [ $(curl --output /dev/null --silent --head -X GET --retry 5 --fail --retry-delay 5 -w "%{response_code}\n" https://api-biohubbc.apps.silver.devops.gov.bc.ca/version) -eq ${code} ]; do
-          >     if [ ${attempt_counter} -eq ${max_attempts} ];then
-          >       echo "Failed Connection"
-          >       exit 1
-          >     fi
-          >     printf '.'
-          >     attempt_counter=$(($attempt_counter+1))
-          >     sleep $wait_time
-          > done
           
       - name: Wait for API response
         uses: nev7n/wait_for_response@v1.0.1
