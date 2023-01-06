@@ -4,6 +4,10 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false # https://github.com/cypress-io/github-action/issues/48
+      matrix:
+        containers: [1, 2] # Uses 2 parallel instances
     env:
       CYPRESS_RECORD_KEY: ${{ secrets.RECORDING_KEY }}
       CYPRESS_username: ${{ secrets.CYPRESS_USER_NAME }}
@@ -14,6 +18,7 @@ jobs:
       CYPRESS_authRealm: ${{ secrets.CYPRESS_AUTH_REALM }}
       CYPRESS_authClientId: ${{ secrets.CYPRESS_AUTH_CLIENT_ID }}
       CYPRESS_authUrl: ${{ secrets.CYPRESS_AUTH_URL }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       # Checkout the PR branch
       - name: Checkout Target Branch
@@ -59,12 +64,6 @@ jobs:
           cd tool-guidance/testing
           chmod +x waitforconnection.sh
           bash ./waitforconnection.sh   
-
-      # Install Node - for `node` and `npm` commands
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16
 
       - name: E2E Smoke tests
         uses: cypress-io/github-action@v5
