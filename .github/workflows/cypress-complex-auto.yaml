@@ -72,6 +72,7 @@ jobs:
         id: smoke
         continue-on-error: false
         with:
+          parallel: true # Runs test in parallel using settings above
           wait-on: ${{ secrets.CYPRESS_HOST }}
           wait-on-timeout: 120
           record: true
