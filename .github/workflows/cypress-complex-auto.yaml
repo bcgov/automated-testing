@@ -6,8 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false # https://github.com/cypress-io/github-action/issues/48
-      matrix:
-        containers: [1, 2] # Uses 2 parallel instances
     env:
       CYPRESS_RECORD_KEY: ${{ secrets.RECORDING_KEY }}
       CYPRESS_username: ${{ secrets.CYPRESS_USER_NAME }}
@@ -72,7 +70,6 @@ jobs:
         id: smoke
         continue-on-error: false
         with:
-          parallel: true # Runs test in parallel using settings above
           wait-on: ${{ secrets.CYPRESS_HOST }}
           wait-on-timeout: 120
           record: true
