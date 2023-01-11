@@ -7,7 +7,6 @@ To effectively run your tests in GHA, you have to make sure that you have set up
 
 The following workflows examples are available:
 * Cypress Simple Manual: The most basic set up, that can be started manually
-* Cypress Complex Manual: The more complex set up, that can be started manually
-* Cypress Complex Auto: The more complex set up, that will be started automatically when code is pushed
+* Cypress Complex Auto: The more complex set up, that will be started automatically when code is pushed or manually when needed
 
 _NB: These workflows have a special install directive for Cypress to avoid version clashes between Cypress and used components. This will show up as WARN in your console output._
