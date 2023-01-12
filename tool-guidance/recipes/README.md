@@ -1,5 +1,9 @@
 # Recipes
 
+Cypress itself has excellent documentation on the tool, but it can be slightly overwhelming at first. The approach here is to get you up and running quickly and once you are getting more familiar with the tool, it is highly recommended that you explore: https://docs.cypress.io
+
+When appropriate we'll include Cypress documentation links for further study.
+
 The following is a list of activities to get you up and running with Cypress E2E testing.
 
 ## Install Cypress
@@ -30,11 +34,18 @@ There will be some testing errors (in the Keycloak test), because you most likel
 
 To open the Cypress application: ```npx cypress open```
 
-Thsi interactive application allows you to run and debug your tests.
+This [interactive application](https://docs.cypress.io/guides/core-concepts/cypress-app) allows you to run and debug your tests.
+
+### First Screen
 ![Initial View](https://github.com/bcgov/automated-testing/raw/main/media/cypress_main.png)
 
+### Browser Selection
 ![Browser Selection](https://github.com/bcgov/automated-testing/raw/main/media/cypress_browser.png)
 
+### Spec (test scripts) List
 ![Spec List](https://github.com/bcgov/automated-testing/raw/main/media/cypress_speclist.png)
 
+### Test Execution
 ![Execution](https://github.com/bcgov/automated-testing/raw/main/media/toolconsole.png)
+
+## 
