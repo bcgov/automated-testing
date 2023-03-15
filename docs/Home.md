@@ -35,17 +35,32 @@ Cypress can be implemented:
   We have not addressed this in this guidance.
 
 ## Writing E2E Tests with Cypress
+The **single best way** to start with Cypress is to use their free, 5 lessons course. https://learn.cypress.io/testing-your-first-application
 
-> Explain how to write and organize test cases using Cypress.
-> Describe how to use the Cypress Test Runner to execute and debug tests.
-> Provide examples of how to write common E2E tests, such as login/logout, form submission, and navigation.
+You'll learn:
 
-- [Building Tests](Building-Tests)
+* App Install and Overview (This is the test app)
+* Installing Cypress and Writing Your First Test (You might want to install with [our install procedure](Tool-Usage))
+* How To Test Forms and Custom Cypress Commands
+* How To Test Multiple Pages
+* How To Test User Journeys (For E2E purposes this one is eesential)
+
+or if you want to immediately get your hands dirty:
+The excellent Cypress documentation site has a straightforward introduction into [Writing your first E2E Test](https://docs.cypress.io/guides/end-to-end-testing/writing-your-first-end-to-end-test).
 
 ## Running E2E Tests with Cypress
 
-- [Executing Tests](Executing-Tests)
-- [Reporting](Reporting)
+To execute your automated tests with Cypress, you can run them locally, through Docker, or on GitHub Actions. 
+Examples are provided for each of these options, making it easy to implement running on OpenShift as well. During the test run, Cypress offers console reporting that shows the test results in real-time.
+* Local running: ```npx cypress run```
+* Github Action [Examples](https://github.com/bcgov/automated-testing/tree/main/.github/workflows)
+* [Docker and Openshift Set up templates](https://github.com/bcgov/automated-testing/tree/main/tool-guidance/containers) (require work)
+
+The preference is for running your tests locally (during development) and then in GitHub actions during your CI/CD
+
+In addition to console reporting, Cypress also provides reporting in GitHub after a run in GitHub Actions. This is useful for tracking and analyzing test results over time. Cypress also offers reporting in the interactive test creation tool when running an individual test locally. This is helpful for debugging and identifying issues with individual tests. For more information see our page on [reporting](Reporting).
+
+In conclusion, executing automated tests with Cypress is an essential part of the software testing process. It helps identify any issues that may not have been uncovered during unit or integration testing, ensuring that the application works as intended when used in a real-world environment. With the right setup, configuration, and reporting tools, Cypress can help you build and maintain a reliable, high-quality application that meets the needs of your users.
 
 ## Best Practices for E2E Test Automation with Cypress
 
