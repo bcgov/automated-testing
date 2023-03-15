@@ -1,7 +1,7 @@
 # Workflow starts automatically on push or can be triggered manually.
 # This is a desirable pattern as it allows for adhoc test runs without a code push
 name: e2e-complex-auto
-on: [push, workflow_dispatch]
+on: [workflow_dispatch]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
