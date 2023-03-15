@@ -35,26 +35,30 @@ Cypress can be implemented:
   We have not addressed this in this guidance.
 
 ## Writing E2E Tests with Cypress
+
 The **single best way** to start with Cypress is to use their free, 5 lessons course. https://learn.cypress.io/testing-your-first-application
 
 You'll learn:
 
-* App Install and Overview (This is the test app)
-* Installing Cypress and Writing Your First Test (You might want to install with [our install procedure](Tool-Usage))
-* How To Test Forms and Custom Cypress Commands
-* How To Test Multiple Pages
-* How To Test User Journeys (For E2E purposes this one is eesential)
+- App Install and Overview (This is the test app)
+- Installing Cypress and Writing Your First Test (You might want to install with [our install procedure](Tool-Usage))
+- How To Test Forms and Custom Cypress Commands
+- How To Test Multiple Pages
+- How To Test User Journeys (For E2E purposes this one is eesential)
 
 or if you want to immediately get your hands dirty:
 The excellent Cypress documentation site has a straightforward introduction into [Writing your first E2E Test](https://docs.cypress.io/guides/end-to-end-testing/writing-your-first-end-to-end-test).
 
 ## Running E2E Tests with Cypress
 
-To execute your automated tests with Cypress, you can run them locally, through Docker, or on GitHub Actions. 
+https://docs.cypress.io/guides/end-to-end-testing/testing-your-app
+
+To execute your automated tests with Cypress, you can run them locally, through Docker, or on GitHub Actions.
 Examples are provided for each of these options, making it easy to implement running on OpenShift as well. During the test run, Cypress offers console reporting that shows the test results in real-time.
-* Local running: ```npx cypress run```
-* Github Action [Examples](https://github.com/bcgov/automated-testing/tree/main/.github/workflows)
-* [Docker and Openshift Set up templates](https://github.com/bcgov/automated-testing/tree/main/tool-guidance/containers) (require work)
+
+- Local running: `npx cypress run`
+- Github Action [Examples](https://github.com/bcgov/automated-testing/tree/main/.github/workflows)
+- [Docker and Openshift Set up templates](https://github.com/bcgov/automated-testing/tree/main/tool-guidance/containers) (require work)
 
 The preference is for running your tests locally (during development) and then in GitHub actions during your CI/CD
 
@@ -64,9 +68,35 @@ In conclusion, executing automated tests with Cypress is an essential part of th
 
 ## Best Practices for E2E Test Automation with Cypress
 
-> Provide guidelines for writing effective and maintainable E2E tests with Cypress.
-> Discuss how to structure test suites and use Cypress commands and assertions effectively.
-> Cover how to manage test data, handle asynchronous operations, and use fixtures and mocks.
+Cypress has a series of best practices documented here: https://docs.cypress.io/guides/references/best-practices
+They entail:
+
+- Organizing Tests, Logging In, Controlling State
+  > We have addressed this by providing the keycloak module in our set up, see https://github.com/bcgov/automated-testing/tree/main/tool-guidance/library/keycloak for guidance
+- Selecting Elements
+  > Targeting an element above by tag, class or id is very volatile and highly subject to change. You may swap out the element, you may refactor CSS and update ID's, or you may add or remove classes that affect the style of the element.
+  > Instead, adding the _data-cy_ attribute to the element gives us a targeted selector that's only used for testing.
+  > The data-cy attribute will not change from CSS style or JS behavioral changes, meaning it's not coupled to the behavior or styling of an element.
+  > Add data-cy with an uniqye name to _every_ element you need to recognize, read or manipulate. This will make your scripts _very_ robust.
+- Assigning Return Values
+- Visiting external sites
+  > Use `cy.request()` to avoid [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) problems
+- Having tests rely on the state of previous tests
+  > Tests should always be able to be run independently from one another and still pass.
+- Creating "tiny" tests with a single assertion
+    > Yeah, just don't.
+- Using after or afterEach hooks
+  > Clean up state before tests run. So that you always know what you have to work with. Similarly if you have to load data, you'll do that before your run.
+- Unnecessary Waiting
+  > Use route aliases or assertions to guard Cypress from proceeding until an explicit condition is met. Waits are sometimes neccessary, but they are the bane of automated testing and will contrubute to the fragility of your tests.
+- Running Tests Intelligently
+    > Time to run tests is often mentioaned as one of the largest negatives of any automated testing tool. Cypress [Smart Orchestration](https://docs.cypress.io/guides/cloud/smart-orchestration) with Cypress Cloud (Pay option) is a way out. Using a combination of parallelization, load balancing, Auto Cancellation, and Spec Prioritization, Smart Orchestration maximizes your available compute resources & minimizes waste.
+- Web Servers
+- Setting a global baseUrl
+
+#### Faker Best Practice
+
+In our install, we give you the option to install [faker-js/faker](https://www.npmjs.com/package/@faker-js/faker). We have also provided a best practice suggestion to use faker here: https://github.com/bcgov/automated-testing/tree/main/tool-guidance/library/faker
 
 ## Integrating Cypress with Other Tools and Frameworks
 
