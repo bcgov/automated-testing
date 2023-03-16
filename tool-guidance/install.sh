@@ -45,6 +45,12 @@ then
   then
     echo "npm install --force --save-dev cypress-plugin-api" >> installconfig.sh
   fi
+  read -p "Do you want to include the Cypress Testing Library? ([y]/n)" ctl
+  ctl=${ctl:-"y"}
+  if [[ $ctl == 'y' ]]
+  then
+    echo "npm install --force --save-dev @testing-library/cypress" >> installconfig.sh
+  fi
 fi
 echo ""
 cat installconfig.sh
@@ -84,12 +90,19 @@ then
   then
     mkdir $testpath/cypress/e2e/examples/api-example
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/example/api-example.cy.js' > $testpath/cypress/e2e/examples/api-example/api-example.cy.$code
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/commands.js' > $testpath/cypress/support/commands.$code
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/commands.js' >> $testpath/cypress/support/commands.$code
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/api/README.md' > $testpath/cypress/e2e/examples/api-example/README.md
+  fi 
+  if [[ $ctl == 'y' ]]
+  then
+    mkdir $testpath/cypress/e2e/examples/ctl-example
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/cypress_testing_library/example/ctl-example.cy.js' > $testpath/cypress/e2e/examples/ctl-example/ctl-example.cy.$code
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/cypress_testing_library/commands.js' >> $testpath/cypress/support/commands.$code
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/cypress_testing_library/README.md' > $testpath/cypress/e2e/examples/ctl-example/README.md
   fi 
   if [[ $keycloak == 'y' ]]
   then
-    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/commands.js' > $testpath/cypress/support/commands.$code
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/commands.js' >> $testpath/cypress/support/commands.$code
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/sample.cypress.env.json' > $testpath/sample.cypress.env.json
     mkdir $testpath/cypress/e2e/examples/keycloak-example
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/README.md' > $testpath/cypress/e2e/examples/keycloak-example/README.md

@@ -1,6 +1,6 @@
 # Automated Testing Guidance
 
-[Scope](Scope) of this wiki.
+[Scope](Scope) of this wiki
 
 ## Introduction:
 
@@ -114,6 +114,9 @@ Additional benefits of GHA are:
 #### Other Modules/Tools/Libraries
 
 Review our [recipes](https://github.com/bcgov/automated-testing/tree/main/tool-guidance/recipes) page where we have summarized to tools added to our core install.
+
+#### Cypress Testing Library
+[Cypress Testing Library](https://testing-library.com/docs/cypress-testing-library/intro/) allows the use of dom-testing queries within Cypress end-to-end browser tests.
 
 #### React
 
