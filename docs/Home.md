@@ -84,13 +84,13 @@ They entail:
 - Having tests rely on the state of previous tests
   > Tests should always be able to be run independently from one another and still pass.
 - Creating "tiny" tests with a single assertion
-    > Yeah, just don't.
+  > Yeah, just don't.
 - Using after or afterEach hooks
   > Clean up state before tests run. So that you always know what you have to work with. Similarly if you have to load data, you'll do that before your run.
 - Unnecessary Waiting
   > Use route aliases or assertions to guard Cypress from proceeding until an explicit condition is met. Waits are sometimes neccessary, but they are the bane of automated testing and will contrubute to the fragility of your tests.
 - Running Tests Intelligently
-    > Time to run tests is often mentioaned as one of the largest negatives of any automated testing tool. Cypress [Smart Orchestration](https://docs.cypress.io/guides/cloud/smart-orchestration) with Cypress Cloud (Pay option) is a way out. Using a combination of parallelization, load balancing, Auto Cancellation, and Spec Prioritization, Smart Orchestration maximizes your available compute resources & minimizes waste.
+  > Time to run tests is often mentioaned as one of the largest negatives of any automated testing tool. Cypress [Smart Orchestration](https://docs.cypress.io/guides/cloud/smart-orchestration) with Cypress Cloud (Pay option) is a way out. Using a combination of parallelization, load balancing, Auto Cancellation, and Spec Prioritization, Smart Orchestration maximizes your available compute resources & minimizes waste.
 - Web Servers
 - Setting a global baseUrl
 
@@ -100,9 +100,24 @@ In our install, we give you the option to install [faker-js/faker](https://www.n
 
 ## Integrating Cypress with Other Tools and Frameworks
 
-> Explain how to integrate Cypress with Continuous Integration (CI) and Continuous Deployment (CD) pipelines.
-> Cover how to use Cypress with other testing tools and frameworks, such as Mocha, Chai, and Jest.
-> Discuss how to use Cypress with popular frontend frameworks, such as React.
+#### GitHub Actions
+
+GHA is the preferred way of running your tests os part of your CI/CD Pipeline.
+We have provided examples here (A simple one and a more complex one) https://github.com/bcgov/automated-testing/tree/main/.github/workflows.
+
+Additional benefits of GHA are:
+
+- Off-loading of work on GHA
+- Reporting and Logging of results see our [Reporting](Reporting) page.
+- Full configurability and tight integration with your CI/CD processes
+
+#### Other Modules/Tools/Libraries
+
+Review our [recipes](https://github.com/bcgov/automated-testing/tree/main/tool-guidance/recipes) page where we have summarized to tools added to our core install.
+
+#### React
+
+> to be included
 
 ## Troubleshooting and Debugging E2E Tests with Cypress
 
