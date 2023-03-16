@@ -105,9 +105,9 @@ then
   fi 
   if [[ $keycloak == 'y' ]]
   then
+    mkdir $testpath/cypress/e2e/examples/keycloak-example
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/commands.js' >> $testpath/cypress/support/commands.$code
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/sample.cypress.env.json' > $testpath/sample.cypress.env.json
-    mkdir $testpath/cypress/e2e/examples/keycloak-example
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/README.md' > $testpath/cypress/e2e/examples/keycloak-example/README.md
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/keycloak/example/keycloak-example.cy.js' > $testpath/cypress/e2e/examples/keycloak-example/keycloak-example.cy.$code
   fi 
