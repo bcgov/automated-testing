@@ -96,9 +96,12 @@ then
   if [[ $ctl == 'y' ]]
   then
     mkdir $testpath/cypress/e2e/examples/ctl-example
+    mkdir $testpath/cypress/fixtures/test-app
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/cypress_testing_library/example/ctl-example.cy.js' > $testpath/cypress/e2e/examples/ctl-example/ctl-example.cy.$code
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/cypress_testing_library/commands.js' >> $testpath/cypress/support/commands.$code
     curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/cypress_testing_library/README.md' > $testpath/cypress/e2e/examples/ctl-example/README.md
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/cypress_testing_library/test-app/index.html' > $testpath/cypress/fixtures/test-app/index.html
+    curl 'https://raw.githubusercontent.com/bcgov/automated-testing/main/tool-guidance/library/cypress_testing_library/test-app/next-page.html' > $testpath/cypress/fixtures/test-app/next-page.html
   fi 
   if [[ $keycloak == 'y' ]]
   then
