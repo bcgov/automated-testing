@@ -1,5 +1,7 @@
 
-import 'cypress-plugin-api';404: Not Found
+import 'cypress-file-upload';
+import 'cypress-plugin-api';
+import '@testing-library/cypress/add-commands';
 import 'cypress-keycloak';
 
 Cypress.Commands.overwrite('login', (originalFn) => {

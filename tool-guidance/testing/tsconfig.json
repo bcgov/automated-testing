@@ -3,7 +3,7 @@
     "target": "es5",
     "lib": ["es5", "dom"],
     "baseUrl": "./",
-    "types": ["cypress", "node", "cypress-file-upload"]
+    "types": ["cypress", "node", "cypress-file-upload","@testing-library/cypress"]
   },
   "include": ["**/*.ts", "**/*.js"]
 }
