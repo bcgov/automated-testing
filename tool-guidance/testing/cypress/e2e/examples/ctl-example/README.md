@@ -34,7 +34,7 @@ cy.configureCypressTestingLibrary(config);
 ```
 
 To show some simple examples (from
-[cypress/e2e/find.cy.js](cypress/e2e/find.cy.js)):
+[cypress/e2e/ctl-example.cy.ts](cypress/e2e/ctl-example.cy.ts)):
 
 ```javascript
 cy.findAllByText("Button Text").should("exist");
