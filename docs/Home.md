@@ -1,5 +1,7 @@
 # Automated Testing Guidance
 
+> **TLDR:** There is more to automated testing than installing a tool. Consider best practices, organization, integration of other tools and modules. Last but not least
+
 [Scope](Scope) of this wiki
 
 ## Introduction:
@@ -154,11 +156,12 @@ Review our [recipes](https://github.com/bcgov/automated-testing/tree/main/tool-g
 
 [Cypress Testing Library](https://testing-library.com/docs/cypress-testing-library/intro/) allows the use of dom-testing queries within Cypress end-to-end browser tests.
 
-## Troubleshooting and Debugging E2E Tests with Cypress
+## Useful Resources
 
-Explain how to identify and resolve common issues and errors that may occur when writing and executing E2E tests with Cypress.
-Cover how to debug tests using the Cypress Test Runner and browser developer tools.
-Discuss how to handle flaky tests and improve test stability and reliability.
+- Official Cypress Documentation: https://docs.cypress.io/
+- Cypress GitHub Repository: https://github.com/cypress-io/cypress
+- Cypress Example Recipes: https://github.com/cypress-io/cypress-example-recipes
+- Cypress Community: https://www.cypress.io/community/
 
 ## Other related Topics
 
