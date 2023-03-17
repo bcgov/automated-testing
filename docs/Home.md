@@ -94,6 +94,41 @@ They entail:
 - Web Servers
 - Setting a global baseUrl
 
+### Organizing your E2E Tests
+
+Here's a suggested structure for organizing your tests in Cypress:
+
+Folder structure: Organize your tests using the recommended folder structure provided by Cypress. By default, Cypress creates a folder called cypress in your project's root directory, which contains several subfolders:
+
+**fixtures**: Store any static data, such as JSON files, needed for your tests.
+**e2e**: Store your actual test files, organized into subfolders based on application features or sections.
+**support**: Store any custom commands or reusable helper functions.
+**Group related tests**: Within the cypress/e2e folder, create subfolders to group related tests based on application features or sections. For example, you might have subfolders for authentication, dashboard, user-management, etc.
+**Naming conventions**: Use consistent naming conventions for your test files. One common approach is to use the format `<feature>.spec.js`, such as login.spec.js, dashboard.spec.js, or user-management.spec.js.
+**Test structure**: Organize individual tests using the describe and it functions provided by Cypress. The describe function is used to group related test cases, while the it function contains the actual test case.
+
+#### Example:
+
+```JavaScript
+describe('Login', () => {
+  it('should display an error message on invalid credentials', () => {
+    // Test steps
+  });
+
+  it('should log in successfully with valid credentials', () => {
+    // Test steps
+  });
+});
+```
+
+Reusable code: Keep your test suite DRY (Don't Repeat Yourself) by creating reusable helper functions and custom commands. Store these in the cypress/support folder and import them as needed. This can help minimize duplication and make your tests easier to maintain.
+
+Test data: Use the fixtures folder to store any static test data needed for your tests, such as sample user data or API responses. Load this data using the cy.fixture() command in your test files.
+
+By following these recommendations, you can create a well-organized and maintainable E2E testing suite using Cypress. Remember that the key is to keep your tests clean, modular, and focused on specific features or scenarios.
+
+A more in-depth article with examples cand be found [here](https://dzone.com/articles/cypress-test-suite-grouping-and-organizing-tests).
+
 #### Faker Best Practice
 
 In our install, we give you the option to install [faker-js/faker](https://www.npmjs.com/package/@faker-js/faker). We have also provided a best practice suggestion to use faker here: https://github.com/bcgov/automated-testing/tree/main/tool-guidance/library/faker
@@ -116,11 +151,8 @@ Additional benefits of GHA are:
 Review our [recipes](https://github.com/bcgov/automated-testing/tree/main/tool-guidance/recipes) page where we have summarized to tools added to our core install.
 
 #### Cypress Testing Library
+
 [Cypress Testing Library](https://testing-library.com/docs/cypress-testing-library/intro/) allows the use of dom-testing queries within Cypress end-to-end browser tests.
-
-#### React
-
-> to be included
 
 ## Troubleshooting and Debugging E2E Tests with Cypress
 
