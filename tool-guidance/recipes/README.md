@@ -87,3 +87,13 @@ We use the [cypress-plugin-api](https://www.npmjs.com/package/cypress-plugin-api
 It is labelled the Cypress plugin for effective API testing. Imagine Postman, but in Cypress. Prints out information about the API call in the Cypress App UI.
 
 More details on our implemenation can be found [here](https://github.com/bcgov/automated-testing/blob/main/tool-guidance/library/api/README.md).
+
+## Cypress Testing Library
+
+Cypress Testing Library allows the use of dom-testing queries within Cypress end-to-end browser tests.
+More details on our implemenation can be found [here](https://github.com/bcgov/automated-testing/blob/main/tool-guidance/library/cypress_testing_library/README.md).
+
+The @testing-library family of packages helps you test UI components in a user-centric way. The core library, [DOM Testing Library](https://testing-library.com/docs/), is a light-weight solution for testing web pages by querying and interacting with DOM nodes (whether simulated with JSDOM/Jest or in the browser). The main utilities it provides involve querying the DOM for nodes in a way that's similar to how the user finds elements on the page. In this way, the library helps ensure your tests give you confidence that your application will work when a real user uses it.
+
+The core library has been wrapped to provide ergonomic APIs for several frameworks, including React, Angular, and Vue.
+We use testing-library queries for end-to-end tests in Cypress and an implementation for [React Native](https://testing-library.com/docs/react-native-testing-library/intro).
