@@ -1,6 +1,6 @@
 # Automated Testing Guidance
 
-> **TLDR:** There is more to automated testing than installing a tool. Consider best practices, organization, integration of other tools and modules. Last but not least
+> **TLDR:** There is more to automated testing than installing a tool. Consider best practices, organization, integration of other tools and modules and test strategies.
 
 [Scope](Scope) of this wiki
 
